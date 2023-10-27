@@ -14,6 +14,6 @@ module counter #(
 
 always_ff @ (posedge clk)
   if (rst) count <= {WIDTH{1'b0}};
-  else if(ld) count <= count + {{WIDTH-1{1'b0}},1'b1};
-  //else     count <= ld ? v : count + {{WIDTH-1{1'b0}},1'b1};
+  //else     count <= ld ? v : count + {{WIDTH-1{1'b0}},1'b1}; // need this line for setting arbitrary value
+  else if (ld) count <= count + {{WIDTH-1{1'b0}},1'b1}; // this is for single stepping (challenge of task 3)
 endmodule
